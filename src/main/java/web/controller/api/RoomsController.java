@@ -25,19 +25,18 @@ public class RoomsController {
     }
 
 
-
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody Room room) {
         roomService.addRoom(room);
     }
 
-/*
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void create(@PathVariable("id") Integer id) {
-        Note note = noteService.getNoteById(id);
-        noteService.removeNote(note);
+        Room room = roomService.getRoomById(id);
+        roomService.deleteRoom(room);
     }
-*/
+
 }

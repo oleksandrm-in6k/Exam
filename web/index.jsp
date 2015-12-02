@@ -14,14 +14,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-route.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/js/room-service.js"></script>
   <script src="/js/app.js"></script>
   <!--base href="/" -->
 </head>
 <body ng-app="hotelApp">
 
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -30,21 +32,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Hotel</a>
+      <a class="navbar-brand" href="#/">Hotel</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="#/rooms">About</a></li>
-        <li><a href="#/reservation">Contact</a></li>
+        <li><a href="#/">Home</a></li>
+
+        <li class="dropdown">
+          <a onclick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rooms<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/rooms">List</a></li>
+            <li><a href="#/room/add">Add</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#/reservation">Reservation</a></li>
+
+
+
       </ul>
     </div>
   </div>
 </nav>
 
 
-<div ng-view></div>
-
+<div class="container" ng-view></div>
 
 </body>
 </html>

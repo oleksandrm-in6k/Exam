@@ -44,7 +44,7 @@ public class RoomDaoImpl extends BaseDaoImpl<Room> implements RoomDao {
 
     @SuppressWarnings("unchecked")
     public Room getById(int id) {
-        return null;
+        return getSession().load(Room.class, id);
     }
 
 /*
