@@ -1,6 +1,7 @@
 package web.controller.api;
 
 import core.entity.Room;
+import core.entity.RoomFilter;
 import core.entity.RoomType;
 import core.service.RoomService;
 import core.service.impl.RoomServiceImpl;
@@ -32,7 +33,7 @@ public class RoomsController {
     //@ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody Room room, HttpServletResponse response) {
 
-        if (!room.isValid()) {
+        if (!roomService.isValid(room)) {
             response.setStatus(300);
             return;
         }
@@ -47,6 +48,13 @@ public class RoomsController {
     public void create(@PathVariable("id") Integer id) {
         Room room = roomService.getRoomById(id);
         roomService.deleteRoom(room);
+    }
+
+    @RequestMapping(value = "/find", method = RequestMethod.POST)
+    public List<Room> find(@RequestBody RoomFilter roomFilter) {
+        List<Room> allRooms = roomService.getAllRooms();
+
+        return roomService.applyFilter(roomFilter, allRooms);
     }
 
 }

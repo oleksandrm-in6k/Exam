@@ -2,6 +2,7 @@ package core.service;
 
 import core.entity.Room;
 import core.entity.RoomClass;
+import core.entity.RoomFilter;
 import core.entity.RoomType;
 
 import java.math.BigDecimal;
@@ -29,6 +30,10 @@ public interface RoomService {
     void deleteRoom(Room room);
 
     void updateRoom(Room room);
+
+    boolean isValid(Room room);
+
+    List<Room> applyFilter(RoomFilter roomFilter, List<Room> rooms);
 
 
 

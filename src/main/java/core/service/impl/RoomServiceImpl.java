@@ -3,12 +3,14 @@ package core.service.impl;
 import core.dao.RoomDao;
 import core.entity.Room;
 import core.entity.RoomClass;
+import core.entity.RoomFilter;
 import core.entity.RoomType;
 import core.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,4 +58,26 @@ public class RoomServiceImpl implements RoomService {
     public void updateRoom(Room room) {
         roomDao.update(room);
     }
+
+    public List<Room> applyFilter(RoomFilter roomFilter, List<Room> rooms) {
+        List<Room> result = new ArrayList<Room>();
+
+        for (Room room: rooms) {
+            if (roomFilter.test(room)) {
+                result.add(room);
+            }
+        }
+
+        return result;
+    }
+
+    public boolean isValid(Room room){
+        if(room.getRoomType() == null || room.getRoomClass() == null || room.getNumber() <= 0 ) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
+

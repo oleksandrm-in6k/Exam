@@ -63,11 +63,4 @@ public class Room {
         this.pricePerDay = pricePerDay;
     }
 
-    public boolean isValid(){
-        if(roomType == null || roomClass == null || number <= 0 ) {
-            return false;
-        }
-
-        return true;
-    }
 }

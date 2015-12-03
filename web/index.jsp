@@ -17,6 +17,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="/js/room-service.js"></script>
+  <script src="/js/room-controllers.js"></script>
   <script src="/js/app.js"></script>
   <!--base href="/" -->
 </head>
@@ -43,6 +44,7 @@
           <ul class="dropdown-menu">
             <li><a href="#/rooms">List</a></li>
             <li><a href="#/rooms/add">Add</a></li>
+            <li><a href="#/rooms/find">Find</a></li>
           </ul>
         </li>
 
