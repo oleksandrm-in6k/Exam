@@ -1,0 +1,29 @@
+<form action="" class="col-xs-4 col-xs-offset-4" onsubmit="return false;">
+    <div>
+        <span class="label label-danger label-lg" ng-show="inputError">You input not illegal data</span>
+    </div>
+
+    <h5>Room info</h5>
+
+    <p>
+        Room number: {{room.number}}
+    </p>
+
+    <label for="room-type">Room type</label>
+    <select id="room-type" class="form-control" ng-model="room.roomType" ng-options="roomType.value as roomType.name for roomType in roomTypes">
+        <option value="">---Select room type---</option>
+    </select><br>
+
+    <label for="room-class">Room class</label>
+    <select id="room-class" class="form-control" ng-model="room.roomClass" ng-options="roomClass.value as roomClass.name for roomClass in roomClasses">
+        <option value="">---Select room class---</option>
+        <option ng-repeat="roomClass in roomClasses" value="{{roomClass}}">{{roomClass}}</option>
+    </select><br>
+
+    <label for="price">Price per day(USD): </label>
+    <input id="price" type="number" class="form-control" placeholder="Price" ng-model="room.pricePerDay" required><br>
+
+    <button class="btn btn-large btn-block btn-success" ng-click="add(room)">Add</button>
+
+</form>
+{{roomId}}
