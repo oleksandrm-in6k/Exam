@@ -13,9 +13,9 @@ import java.util.List;
  */
 public interface ReservationService {
 
-    Room getReservationById(int id);
+    Reservation getReservationById(int id);
 
-    Room getAllReservationByRoomNumber(int number);
+    List<Reservation> getAllReservationByRoomNumber(int number);
 
     List<Reservation> getAllReservations();
 

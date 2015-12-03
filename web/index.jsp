@@ -48,7 +48,7 @@
           </ul>
         </li>
 
-        <li><a href="#/reservation">Reservation</a></li>
+        <li><a href="#/reservations">Reservation</a></li>
 
 
 
