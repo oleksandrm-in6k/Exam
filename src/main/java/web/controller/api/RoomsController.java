@@ -29,16 +29,22 @@ public class RoomsController {
     }
 
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public Room getRoom(@PathVariable("id") Integer id) {
+        return roomService.getRoomById(id);
+    }
+
+
     @RequestMapping(value = "", method = RequestMethod.POST)
-    //@ResponseStatus(HttpStatus.CREATED)
+
     public void create(@RequestBody Room room, HttpServletResponse response) {
 
         if (!roomService.isValid(room)) {
-            response.setStatus(300);
+            response.setStatus(400);
             return;
         }
-
-
+        response.setStatus(201);
         roomService.addRoom(room);
     }
 

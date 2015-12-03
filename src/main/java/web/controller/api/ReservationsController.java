@@ -30,12 +30,12 @@ public class ReservationsController {
         reservationService.addReservation(reservation);
     }
 
-//
-//    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    public void create(@PathVariable("id") Integer id) {
-//        Room room = roomService.getRoomById(id);
-//        roomService.deleteRoom(room);
-//    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void create(@PathVariable("id") Integer id) {
+        Reservation reservation = reservationService.getReservationById(id);
+        reservationService.deleteReservation(reservation);
+    }
 
 }

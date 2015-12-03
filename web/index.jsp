@@ -17,9 +17,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-resource.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="/js/room-service.js"></script>
+  <script src="/js/reservation-service.js"></script>
   <script src="/js/room-controllers.js"></script>
+  <script src="/js/reservation-controllers.js"></script>
   <script src="/js/app.js"></script>
-  <!--base href="/" -->
+
 </head>
 <body ng-app="hotelApp">
 
@@ -48,8 +50,14 @@
           </ul>
         </li>
 
-        <li><a href="#/reservations">Reservation</a></li>
-
+        <li>
+          <a onclick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reservations<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/reservations">List</a></li>
+            <li><a href="#/reservations/add">Add</a></li>
+            <li><a href="#/reservations/find">Find</a></li>
+          </ul>
+        </li>
 
 
       </ul>

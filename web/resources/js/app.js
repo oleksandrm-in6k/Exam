@@ -1,4 +1,4 @@
-var hotelApp = angular.module('hotelApp', ['ngRoute', 'RoomService', 'RoomControllers']);
+var hotelApp = angular.module('hotelApp', ['ngRoute', 'RoomService', 'RoomControllers', 'ReservationControllers']);
 
 hotelApp.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -17,10 +17,21 @@ hotelApp.config(function ($routeProvider, $locationProvider) {
         .when('/rooms/find', {
             templateUrl: 'templates/rooms/find.html',
             controller: 'RoomFindController'
-
         })
+
+
         .when('/reservations', {
-            templateUrl: 'templates/reservations/list.html'
+            templateUrl: 'templates/reservations/list.html',
+            controller: 'ReservationListController'
+        })
+        .when('/reservations/add', {
+            templateUrl: 'templates/reservations/add.html',
+            controller: 'ReservationAddController'
+        })
+        .when('/reservations/find', {
+            templateUrl: 'templates/reservations/find.html',
+            controller: 'ReservationFindController'
+
         })
         .otherwise({
             redirectTo: '/'

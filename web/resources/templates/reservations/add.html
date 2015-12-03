@@ -2,8 +2,12 @@
     <div>
         <span class="label label-danger label-lg" ng-show="inputError">You input not illegal data</span>
     </div>
-    <label for="number">Room number</label>
-    <input id="number" type="number" class="form-control" placeholder="Room number" ng-model="room.number" required autofocus><br>
+
+    <h5>Room info</h5>
+
+    <p>
+        Room number: {{room.number}}
+    </p>
 
     <label for="room-type">Room type</label>
     <select id="room-type" class="form-control" ng-model="room.roomType" ng-options="roomType.value as roomType.name for roomType in roomTypes">
@@ -22,3 +26,4 @@
     <button class="btn btn-large btn-block btn-success" ng-click="add(room)">Add</button>
 
 </form>
+{{roomId}}
