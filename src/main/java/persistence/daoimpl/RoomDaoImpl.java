@@ -4,6 +4,7 @@ import core.dao.RoomDao;
 import core.entity.Room;
 import core.entity.RoomClass;
 import core.entity.RoomType;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -17,7 +18,10 @@ public class RoomDaoImpl extends BaseDaoImpl<Room> implements RoomDao {
 
     @SuppressWarnings("unchecked")
     public List<Room> getRoomsByType(RoomType roomType) {
-        return null;
+        return getSession()
+                .createCriteria(Room.class)
+                .add(Restrictions.eq("roomType", roomType))
+                .list();
     }
 
     @SuppressWarnings("unchecked")

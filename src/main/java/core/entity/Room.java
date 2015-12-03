@@ -62,4 +62,12 @@ public class Room {
     public void setPricePerDay(BigDecimal pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
+
+    public boolean isValid(){
+        if(roomType == null || roomClass == null || number <= 0 ) {
+            return false;
+        }
+
+        return true;
+    }
 }

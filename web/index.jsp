@@ -42,7 +42,7 @@
           <a onclick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rooms<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#/rooms">List</a></li>
-            <li><a href="#/room/add">Add</a></li>
+            <li><a href="#/rooms/add">Add</a></li>
           </ul>
         </li>
 
