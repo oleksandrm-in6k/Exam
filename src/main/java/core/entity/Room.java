@@ -1,16 +1,24 @@
 package core.entity;
 
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.validation.annotation.Validated;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "rooms")
+@Validated
 public class Room {
 
     @Id
     @GeneratedValue
     private int id;
 
+    @Min(1)
+    @Max(1000)
     @Column(name = "number")
     private int number;
 
@@ -20,6 +28,7 @@ public class Room {
     @Column(name = "room_class")
     private RoomClass roomClass;
 
+    @Min(0)
     @Column(name = "price_per_day")
     private BigDecimal pricePerDay;
 

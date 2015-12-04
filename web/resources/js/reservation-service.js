@@ -1,5 +1,6 @@
 angular.module('ReservationService', ['ngResource'])
     .factory('ReservationService', function ($resource, $http) {
+
         var basePath = '/api/reservations/';
 
         var data = $resource(basePath + ':id', {id: '@id'});

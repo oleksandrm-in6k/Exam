@@ -15,5 +15,5 @@ public interface BaseDao<T> {
     void addOrUpdate(T entityObj);
 
     void update(T entityObj);
-    
+
 }

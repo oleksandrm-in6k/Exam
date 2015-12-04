@@ -2,14 +2,7 @@ angular.module('RoomService', ['ngResource'])
     .factory('RoomService', function ($resource, $http) {
         var basePath = '/api/rooms/';
 
-        var data = $resource(basePath + ':id', {id: '@id'}, {
-            update:{
-                method:'PUT'
-            },
-            delete: {
-                method: 'DELETE'
-            }
-         });
+        var data = $resource(basePath + ':id', {id: '@id'});
 
 
         data.find = function(filterObj, successCallback, errorCallback) {

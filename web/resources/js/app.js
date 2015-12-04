@@ -1,9 +1,21 @@
 var hotelApp = angular.module('hotelApp', ['ngRoute', 'RoomService', 'RoomControllers', 'ReservationControllers']);
 
+angular.module('App', [])
+    .factory('myHttp',['$http',function($http) {
+        return function(url, success, failure) {
+            $http.get(url).success(function (json) {
+                var data = examineJSONResponse(json);
+                data && data.success ? success() : failure();
+            }).error(failure);
+        }
+    }]);
+
+
 hotelApp.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'templates/main.html'
+            templateUrl: 'templates/main.html',
+            controller: 'GeneralController'
         })
         .when('/rooms', {
             templateUrl: 'templates/rooms/list.html',
@@ -37,4 +49,8 @@ hotelApp.config(function ($routeProvider, $locationProvider) {
             redirectTo: '/'
         });
     $locationProvider.html5Mode(false);
+});
+
+hotelApp.controller('GeneralController', function (myHttp) {
+    myHttp()
 });

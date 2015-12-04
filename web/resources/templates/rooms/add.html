@@ -5,6 +5,7 @@
     <label for="number">Room number</label>
     <input id="number" type="number" class="form-control" placeholder="Room number" ng-model="room.number" required autofocus><br>
 
+
     <label for="room-type">Room type</label>
     <select id="room-type" class="form-control" ng-model="room.roomType" ng-options="roomType.value as roomType.name for roomType in roomTypes">
         <option value="">---Select room type---</option>
@@ -19,6 +20,6 @@
     <label for="price">Price per day(USD): </label>
     <input id="price" type="number" class="form-control" placeholder="Price" ng-model="room.pricePerDay" required><br>
 
-    <button class="btn btn-large btn-block btn-success" ng-click="add(room)">Add</button>
+    <button class="btn btn-large btn-block btn-success" ng-click="add(room)" ng-disabled="room.number.$invalid">Add</button>
 
 </form>

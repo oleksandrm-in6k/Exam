@@ -4,11 +4,8 @@ import core.entity.Room;
 import core.entity.RoomFilter;
 import core.entity.RoomType;
 import core.service.RoomService;
-import core.service.impl.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -37,15 +34,9 @@ public class RoomsController {
 
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-
     public void create(@RequestBody Room room, HttpServletResponse response) {
-
-        if (!roomService.isValid(room)) {
-            response.setStatus(400);
-            return;
-        }
-        response.setStatus(201);
         roomService.addRoom(room);
+        response.setStatus(HttpStatus.CREATED.value());
     }
 
 
@@ -62,5 +53,6 @@ public class RoomsController {
 
         return roomService.applyFilter(roomFilter, allRooms);
     }
+
 
 }

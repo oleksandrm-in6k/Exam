@@ -44,6 +44,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
+    <bean class="web.controller.api.GlobalExceptionsHandler"/>
 
 
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
