@@ -1,15 +1,27 @@
 var hotelApp = angular.module('hotelApp', ['ngRoute', 'RoomService', 'RoomControllers', 'ReservationControllers']);
 
-angular.module('App', [])
-    .factory('myHttp',['$http',function($http) {
+hotelApp.factory('myHttp',['$http',function($q,$http) {
         return function(url, success, failure) {
-            $http.get(url).success(function (json) {
-                var data = examineJSONResponse(json);
-                data && data.success ? success() : failure();
-            }).error(failure);
+            //console.log($q.reject());
+            $q.defer().reject();
+
         }
     }]);
 
+hotelApp.directive('validButton', function () {
+    var link = function (scope) {
+        scope.isValid = function () {
+            return scope.room.number <= 0 || !scope.room.roomType || !scope.room.roomClass ||
+            !(scope.room.pricePerDay > 0);
+        }
+    };
+
+    return {
+        scope: true,
+        link: link
+    };
+
+});
 
 hotelApp.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -51,6 +63,8 @@ hotelApp.config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(false);
 });
 
-hotelApp.controller('GeneralController', function (myHttp) {
-    myHttp()
+hotelApp.controller('GeneralController', function (myHttp, $http) {
+    myHttp('/api/rooms/', function () {alert('good')}, function () {alert('bad');});
+
+    $http.get('/api/rooms/');
 });

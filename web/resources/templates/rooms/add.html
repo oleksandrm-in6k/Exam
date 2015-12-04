@@ -1,25 +1,49 @@
-<form action="" class="col-xs-4 col-xs-offset-4" onsubmit="return false;">
+<style>
+    .error{
+        color: red;
+        height: 20px;
+    }
+</style>
+
+<form action="" class="col-xs-4 col-xs-offset-4" onsubmit="return false;" name="roomAddForm">
     <div>
         <span class="label label-danger label-lg" ng-show="inputError">You input not illegal data</span>
     </div>
     <label for="number">Room number</label>
-    <input id="number" type="number" class="form-control" placeholder="Room number" ng-model="room.number" required autofocus><br>
+    <input id="number" name="number" type="number" class="form-control" placeholder="Room number" ng-model="room.number" required autofocus>
+    <div class="error">
+        <span ng-show="roomAddForm.number.$error.required && roomAddForm.number.$dirty">Required!</span>
+        <span ng-show="room.number<=0">Room number should be positive</span>
+    </div>
 
 
-    <label for="room-type">Room type</label>
-    <select id="room-type" class="form-control" ng-model="room.roomType" ng-options="roomType.value as roomType.name for roomType in roomTypes">
+    <label for="roomType">Room type</label>
+    <select id="roomType" name="roomType" class="form-control" ng-model="room.roomType" ng-options="roomType.value as roomType.name for roomType in roomTypes">
         <option value="">---Select room type---</option>
-    </select><br>
+    </select>
+    <div class="error">
+        <span ng-show="!room.roomType && roomAddForm.roomType.$dirty">Required</span>
+    </div>
+
 
     <label for="room-class">Room class</label>
-    <select id="room-class" class="form-control" ng-model="room.roomClass" ng-options="roomClass.value as roomClass.name for roomClass in roomClasses">
+    <select id="room-class" name="roomClass" class="form-control" ng-model="room.roomClass" ng-options="roomClass.value as roomClass.name for roomClass in roomClasses">
         <option value="">---Select room class---</option>
         <option ng-repeat="roomClass in roomClasses" value="{{roomClass}}">{{roomClass}}</option>
-    </select><br>
+    </select>
+    <div class="error">
+        <span ng-show="!room.roomClass && roomAddForm.roomClass.$dirty">Required</span>
+    </div>
+
 
     <label for="price">Price per day(USD): </label>
-    <input id="price" type="number" class="form-control" placeholder="Price" ng-model="room.pricePerDay" required><br>
+    <input id="price" name="price" type="number" class="form-control" placeholder="Price" ng-model="room.pricePerDay" required><br>
+    <div class="error">
+        <span ng-show="roomAddForm.price.$error.required && roomAddForm.price.$dirty">Required!</span>
+        <span ng-show="room.price<0">Price per room should be positive</span>
+    </div>
 
-    <button class="btn btn-large btn-block btn-success" ng-click="add(room)" ng-disabled="room.number.$invalid">Add</button>
+
+    <valid-button class="btn btn-primary btn-block" ng-disabled="isValid()">Add</valid-button>
 
 </form>

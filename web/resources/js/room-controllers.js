@@ -20,6 +20,7 @@ hotelApp.controller('RoomListController', function ($scope, $http, RoomService) 
 
 
 hotelApp.controller('RoomAddController', function ($scope, $http, RoomService, $location) {
+    $scope.room = {};
 
     $scope.roomTypes = [{name: 'SGL', value: 'SGL'}, {name: 'DBL', value: 'DBL'}];
     $scope.roomClasses = [{name: 'Budget', value: 'BUDGET'}, {name: 'Standart', value: 'STANDART'}, {name: 'Lux', value: 'LUX'}];
@@ -34,6 +35,7 @@ hotelApp.controller('RoomAddController', function ($scope, $http, RoomService, $
             }, 3000);
         });
     }
+
 });
 
 
