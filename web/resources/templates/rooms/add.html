@@ -37,10 +37,10 @@
 
 
     <label for="price">Price per day(USD): </label>
-    <input id="price" name="price" type="number" class="form-control" placeholder="Price" ng-model="room.pricePerDay" required><br>
+    <input id="price" name="price" type="number" class="form-control" placeholder="Price" ng-model="room.pricePerDay" required>
     <div class="error">
         <span ng-show="roomAddForm.price.$error.required && roomAddForm.price.$dirty">Required!</span>
-        <span ng-show="room.price<0">Price per room should be positive</span>
+        <span ng-show="room.pricePerDay<0">Price per room should be positive</span>
     </div>
 
 

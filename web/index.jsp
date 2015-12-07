@@ -20,6 +20,7 @@
   <script src="/js/reservation-service.js"></script>
   <script src="/js/room-controllers.js"></script>
   <script src="/js/reservation-controllers.js"></script>
+  <script src="/js/room-directives.js"></script>
   <script src="/js/app.js"></script>
 
 </head>

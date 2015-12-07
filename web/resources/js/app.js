@@ -1,4 +1,4 @@
-var hotelApp = angular.module('hotelApp', ['ngRoute', 'RoomService', 'RoomControllers', 'ReservationControllers']);
+var hotelApp = angular.module('hotelApp', ['ngRoute', 'RoomService', 'RoomControllers', 'ReservationControllers', 'validButtonDirective']);
 
 hotelApp.factory('myHttp',['$http',function($q,$http) {
         return function(url, success, failure) {
@@ -7,21 +7,6 @@ hotelApp.factory('myHttp',['$http',function($q,$http) {
 
         }
     }]);
-
-hotelApp.directive('validButton', function () {
-    var link = function (scope) {
-        scope.isValid = function () {
-            return scope.room.number <= 0 || !scope.room.roomType || !scope.room.roomClass ||
-            !(scope.room.pricePerDay > 0);
-        }
-    };
-
-    return {
-        scope: true,
-        link: link
-    };
-
-});
 
 hotelApp.config(function ($routeProvider, $locationProvider) {
     $routeProvider
